@@ -1,0 +1,21 @@
+.floating {
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.content {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+}
+
+.text {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
