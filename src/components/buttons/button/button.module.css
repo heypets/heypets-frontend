@@ -1,0 +1,15 @@
+.button {
+  border: 0;
+  height: 60px;
+  padding: 16px 50px;
+  font-weight: 700;
+  background-color: var(--orange-700);
+}
+
+.button:disabled {
+  background-color: var(--gray-200);
+}
+
+.button.round {
+  border-radius: 12px;
+}
