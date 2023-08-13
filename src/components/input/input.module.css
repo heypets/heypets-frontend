@@ -1,5 +1,13 @@
+.label {
+  color: var(--gray-800);
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
 .container {
-  display: block;
+  display: flex;
   height: 54px;
   padding: 16px 12px;
   border-radius: 4px;
@@ -11,7 +19,7 @@
   border-color: var(--gray-800);
 }
 
-.container > input {
+.input {
   border: 0;
   width: 100%;
   outline: none;
@@ -19,12 +27,21 @@
   background-color: inherit;
 }
 
-.container > input::placeholder {
+.input::placeholder {
   color: var(--gray-600);
 }
 
-.hidden {
-  display: none;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+
+  color: var(--gray-400);
+  background-color: transparent;
+  border: none;
+  width: 20px;
+  height: 20px;
 }
 
 .errorBorder,
@@ -33,8 +50,13 @@
 }
 
 .errorText {
+  display: inline-block;
   color: var(--red-700);
   font-size: 12px;
   font-weight: 400;
   margin-top: 8px;
+}
+
+.hidden {
+  display: none;
 }
