@@ -6,7 +6,6 @@
   color: var(--gray-800);
   font-size: 12px;
   font-weight: 400;
-  margin-bottom: 8px;
   display: inline-block;
 }
 
@@ -22,6 +21,9 @@
   color: var(--black);
   position: relative;
   overflow: hidden;
+
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .container:focus-within {
@@ -77,10 +79,13 @@
   border: 1px solid var(--red-700);
 }
 
-.errorText {
-  color: var(--red-700);
+.text {
+  color: var(--gray-400);
   font-size: 12px;
   font-weight: 400;
-  margin-top: 8px;
   display: inline-block;
+}
+
+.errorText {
+  color: var(--red-700);
 }

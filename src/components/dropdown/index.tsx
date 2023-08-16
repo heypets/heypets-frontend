@@ -9,6 +9,7 @@ function DropDown({
   id = 'text_input',
   label,
   error,
+  message,
   options,
   disabled,
   required,
@@ -53,7 +54,9 @@ function DropDown({
           <ArrowDown />
         </button>
       </div>
-      {error && <span className={style.errorText}>{error}</span>}
+      <span className={cn(style.text, { [style.errorText]: Boolean(error) })}>
+        {error || message}
+      </span>
     </div>
   );
 }
@@ -67,6 +70,7 @@ type DropDownProps = {
   id?: string;
   label?: string;
   error?: string;
+  message?: string;
   options: Option[];
   placeholder: string;
 } & HTMLProps<HTMLSelectElement>;
