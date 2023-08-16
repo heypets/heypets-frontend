@@ -1,4 +1,9 @@
-import { useState, type HTMLProps, forwardRef } from 'react';
+import {
+  useState,
+  type HTMLProps,
+  forwardRef,
+  ChangeEventHandler,
+} from 'react';
 import style from './input.module.css';
 
 import cn from 'classnames';
@@ -7,14 +12,26 @@ import Cancel from 'public/icons/cancel.svg';
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { id = 'text_input', label, error, className, ...restProps }: InputProps,
+    {
+      id = 'text_input',
+      label,
+      error,
+      message,
+      className,
+      onChange,
+      ...restProps
+    }: InputProps,
     ref
   ) => {
     const [value, setValue] = useState('');
-    const [isFocus, setFocus] = useState(false);
+
+    const onTextChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+      onChange?.(e);
+      setValue(e.target.value);
+    };
 
     return (
-      <div>
+      <div className={style.wrapper}>
         <label
           htmlFor={id}
           className={cn(style.label, { [style.hidden]: !label })}>
@@ -34,20 +51,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             value={value}
             autoComplete="off"
             className={style.input}
-            onBlur={() => setFocus(false)}
-            onFocus={() => setFocus(true)}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={onTextChange}
             {...restProps}
           />
           <button
-            onMouseDown={() => setValue('')}
-            className={cn(style.button, {
-              [style.hidden]: !value || !isFocus,
-            })}>
+            onClick={() => setValue('')}
+            className={cn(style.button, { [style.hidden]: !value })}>
             <Cancel />
           </button>
         </div>
-        {error && <span className={style.errorText}>{error}</span>}
+        <span className={cn(style.text, { [style.errorText]: Boolean(error) })}>
+          {error || message}
+        </span>
       </div>
     );
   }
@@ -59,6 +74,7 @@ type InputProps = {
   id?: string;
   label?: string;
   error?: string;
+  message?: string;
 } & HTMLProps<HTMLInputElement>;
 
 export default Input;

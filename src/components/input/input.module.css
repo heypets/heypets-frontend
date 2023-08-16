@@ -1,8 +1,11 @@
+.wrapper:not(:focus-within) > .container > .button {
+  display: none;
+}
+
 .label {
   color: var(--gray-800);
   font-size: 12px;
   font-weight: 400;
-  margin-bottom: 8px;
   display: inline-block;
 }
 
@@ -13,6 +16,9 @@
   border-radius: 4px;
   border: 1px solid var(--gray-200);
   background-color: var(--white);
+
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .container:focus-within {
@@ -49,12 +55,15 @@
   border: 1px solid var(--red-700);
 }
 
+.text {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
 .errorText {
   display: inline-block;
   color: var(--red-700);
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 8px;
 }
 
 .hidden {
