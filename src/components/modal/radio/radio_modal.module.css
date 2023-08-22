@@ -1,0 +1,7 @@
+.list {
+  padding: 32px 16px;
+}
+
+.item:not(:first-of-type) {
+  margin-top: 16px;
+}
