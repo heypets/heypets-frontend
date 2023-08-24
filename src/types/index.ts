@@ -1,0 +1,1 @@
+export type PageType = 'home' | 'diary' | 'book' | 'mypet';
