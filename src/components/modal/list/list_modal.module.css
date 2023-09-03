@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  width: 100%;
+  text-align: center;
+}
+
+.item button {
+  padding: 17px 0;
+  background-color: transparent;
+  border: none;
+  color: var(--black);
+  width: 100%;
+}
+
+.item button:focus {
+  background-color: var(--gray-50);
+}

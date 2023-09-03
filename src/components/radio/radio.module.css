@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  color: var(--gray-800);
+}
+
+.container input {
+  margin-right: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: max(2px, 0.1em) solid var(--gray-200);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.container input:checked {
+  border-color: var(--orange-600);
+}
+
+.container input:checked::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: var(--orange-600);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
