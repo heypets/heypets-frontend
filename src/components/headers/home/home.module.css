@@ -1,0 +1,32 @@
+.logo {
+  flex: 1;
+  background: transparent;
+  border: none;
+  text-align: start;
+}
+
+.wrapper {
+  display: flex;
+  width: 72px;
+  justify-content: space-between;
+}
+
+.search,
+.notify {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  position: relative;
+}
+
+.notify_unread::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background-color: var(--red-700);
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+}
