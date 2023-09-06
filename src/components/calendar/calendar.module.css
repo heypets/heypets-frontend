@@ -1,0 +1,63 @@
+.date {
+  color: black;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  min-width: 360px;
+}
+
+.weeks {
+  display: flex;
+  padding: 4px 5px;
+  border-bottom: 1px solid var(--gray-50);
+  color: var(--gray-400);
+}
+
+.week {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+}
+
+.days {
+  display: flex;
+  padding: 0px 5px;
+}
+
+.days > * {
+  flex: 1;
+}
+
+.day {
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4px 0;
+  height: 48px;
+}
+
+.day > span {
+  font-size: 14px;
+  color: var(--gray-800);
+  line-height: 20px;
+  pointer-events: none;
+}
+
+.selected > span {
+  color: var(--white);
+  width: 24px;
+  height: 24px;
+  background-color: var(--orange-700);
+  border-radius: 50%;
+  line-height: 24px;
+}
+
+.last > span,
+.next > span {
+  color: var(--gray-200);
+}
