@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--white);
+}
+
+.wrapper > header {
+  height: 66px;
+}
+
+.wrapper > main {
+  flex: 1;
+  overflow: auto;
+}
+
+.wrapper > footer {
+  height: 66px;
+}
