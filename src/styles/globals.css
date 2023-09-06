@@ -198,3 +198,12 @@ a {
   font-size: 12px;
   font-weight: 400;
 }
+
+.ellipsis {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: start;
+  word-break: break-all;
+}

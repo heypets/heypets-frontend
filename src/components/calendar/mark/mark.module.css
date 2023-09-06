@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.todo,
+.picture,
+.diary {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.todo {
+  background-color: var(--red-700);
+}
+.picture {
+  background-color: var(--orange-700);
+}
+.diary {
+  background-color: var(--blue-700);
+}
