@@ -1,14 +1,16 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
+import PetList from '@/container/home/petlist';
+import HomeHeader from '@/components/headers/home';
 
-const inter = Inter({ subsets: ['latin'] });
+import style from '@styles/home.module.css';
 
-export default function Home() {
+const Home = () => {
   return (
-    <>
-      <div>home</div>
-    </>
+    <div className={style.wrapper}>
+      <PetList />
+    </div>
   );
-}
+};
+
+Home.Header = HomeHeader;
+
+export default Home;
