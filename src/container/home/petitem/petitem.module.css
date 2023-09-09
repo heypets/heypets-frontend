@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  background-color: var(--white);
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  color: var(--black);
+  font-weight: 700;
+  width: calc(100% - 48px);
+}
+
+.name {
+  font-size: 16px;
+  text-align: start;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
