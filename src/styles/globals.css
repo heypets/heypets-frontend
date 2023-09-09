@@ -1,4 +1,9 @@
 :root {
+  --header-height: 66px;
+  --footer-height: 66px;
+  --main-height: calc(
+    100vh - calc(var(--header-height) + var(--footer-height))
+  );
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
