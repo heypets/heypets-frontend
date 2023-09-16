@@ -5,15 +5,36 @@ import Layout from '@/components/layout';
 import HomeHeader from '@/components/headers/home';
 
 import type { NextPage } from 'next';
-import type { ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { serviceWorker } from '@mocks/browser';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function App({ Component, pageProps }: AppPropsWithHeader) {
   const header = Component.Header ?? HomeHeader;
 
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      serviceWorker().start();
+    }
+  }, []);
+
   return (
-    <Layout header={header}>
-      <Component {...pageProps} />
-    </Layout>
+    <QueryClientProvider client={queryClient}>
+      <Layout header={header}>
+        <Component {...pageProps} />
+      </Layout>
+    </QueryClientProvider>
   );
 }
 

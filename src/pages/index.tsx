@@ -1,4 +1,4 @@
-import PetList from '@/container/home/petlist';
+import PetList from '@/components/page/home/petlist';
 import HomeHeader from '@/components/headers/home';
 
 import style from '@styles/home.module.css';

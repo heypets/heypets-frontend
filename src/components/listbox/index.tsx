@@ -66,13 +66,13 @@ ListBox.Options = function Options({ children, className }: OptionsProps) {
 type OptionProps = ChildrenWithCustomProps<{
   selected: boolean;
 }> & {
-  unique: string;
+  key: string;
   value: any;
   as?: (props: PropsWithChildren<HTMLProps<HTMLLIElement>>) => ReactNode;
 };
 ListBox.Option = function Option({
   as: As = (props) => <li {...props} />,
-  unique,
+  key,
   value,
   children,
   className,
@@ -80,7 +80,7 @@ ListBox.Option = function Option({
   const { value: selectedValue, onChange } = useContext(selectContext);
 
   return (
-    <As key={unique} className={className} onClick={onChange}>
+    <As key={key} className={className} onClick={onChange}>
       {typeof children === 'function' &&
         children({ selected: value === selectedValue })}
       {typeof children !== 'function' && children}
