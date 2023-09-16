@@ -38,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 4px 0;
+  margin: 2px 0;
   height: 48px;
 }
 
@@ -47,15 +47,17 @@
   color: var(--gray-800);
   line-height: 20px;
   pointer-events: none;
+  display: inline-block;
+  padding-top: 2px;
 }
 
 .selected > span {
   color: var(--white);
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   background-color: var(--orange-700);
   border-radius: 50%;
-  line-height: 24px;
+  line-height: 20px;
 }
 
 .last > span,
