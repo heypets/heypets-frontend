@@ -15,7 +15,7 @@ const PetList = () => {
       </ListBox.Button>
 
       <ListBox.Options className={style.list}>
-        <ListBox.Option unique="ddd" value="1" className={style.item}>
+        <ListBox.Option key="ddd" value="1" className={style.item}>
           <PetItem
             imgUrl="/image/profile.png"
             name="테스트테스트테스트테스트테스트테스트테스트"
