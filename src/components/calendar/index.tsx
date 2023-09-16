@@ -3,18 +3,55 @@ import style from './calendar.module.css';
 import cn from 'classnames';
 import { MouseEventHandler } from 'react';
 
-const Calendar = () => {
-  const { days, weeks, changeDate, date } = useCalendar();
+import LeftIcon from 'public/icons/arrow_left.svg';
+import RightIcon from 'public/icons/arrow_right.svg';
 
-  const onClick: MouseEventHandler = (event) => {
+type CalendarProps = {
+  className?: string;
+};
+
+const Calendar = ({ className }: CalendarProps) => {
+  const { days, weeks, changeDate, date, goToNextMonth, goToPrevMonth } =
+    useCalendar();
+
+  const onDateClick: MouseEventHandler = (event) => {
     const target = event.target as HTMLElement;
     const { day, month } = target.dataset;
 
     changeDate({ value: Number(day), month: month as State['month'] });
   };
 
+  const onChangeMonth: MouseEventHandler = (event) => {
+    const target = event.target as HTMLButtonElement;
+    const id = target.id;
+
+    if (id === 'prev') {
+      goToPrevMonth();
+    } else if (id === 'next') {
+      goToNextMonth();
+    }
+  };
+
   return (
-    <>
+    <div className={className}>
+      <div className={style.controls}>
+        <button
+          id="prev"
+          type="button"
+          className={style.prev_btn}
+          onClick={onChangeMonth}>
+          <LeftIcon />
+        </button>
+        <span className={style.date_txt}>{date.format('YYYY년 MM월')}</span>
+        <button
+          id="next"
+          type="button"
+          className={style.next_btn}
+          onClick={onChangeMonth}>
+          <RightIcon />
+        </button>
+      </div>
+
       <div className={style.wrapper}>
         <ul className={style.weeks}>
           {weeks.map((week, idx) => {
@@ -35,7 +72,7 @@ const Calendar = () => {
                     <div
                       data-day={value}
                       data-month={month}
-                      onClick={onClick}
+                      onClick={onDateClick}
                       className={cn(style.day, {
                         [style.last]: month === 'LAST',
                         [style.next]: month === 'NEXT',
@@ -51,7 +88,7 @@ const Calendar = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

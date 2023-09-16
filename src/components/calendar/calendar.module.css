@@ -7,6 +7,7 @@
   flex-direction: column;
   color: black;
   min-width: 360px;
+  background-color: white;
 }
 
 .weeks {
@@ -60,4 +61,29 @@
 .last > span,
 .next > span {
   color: var(--gray-200);
+}
+
+.controls {
+  color: black;
+  display: flex;
+  align-items: center;
+  padding: 18px 8px;
+  background-color: white;
+}
+
+.date_txt {
+  line-height: 20px;
+  margin: 0 8px;
+  font-size: 14px;
+}
+
+.prev_btn,
+.next_btn {
+  background: transparent;
+  border: none;
+}
+
+.prev_btn > *,
+.next_btn > * {
+  pointer-events: none;
 }
