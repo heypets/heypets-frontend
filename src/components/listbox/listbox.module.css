@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+}
+
+.options > ul {
+  width: inherit;
+}
