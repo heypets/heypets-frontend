@@ -2,10 +2,8 @@ import { useState } from 'react';
 
 import Day from '../day';
 
-const now = new Day();
-
 const useCalendar = () => {
-  const [date, setDate] = useState(now);
+  const [date, setDate] = useState(() => new Day());
 
   const goToPrevMonth = () => {
     setDate(date.monthsAgo(1));
