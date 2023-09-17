@@ -1,0 +1,24 @@
+.tag {
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue {
+  background: var(--blue-50);
+  color: var(--blue-800);
+}
+
+.gray {
+  background: var(--gray-100);
+  color: var(--gray-800);
+}
+
+.white {
+  background: var(--white);
+  color: var(--gray-800);
+}
