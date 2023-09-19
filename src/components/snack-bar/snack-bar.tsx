@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "./Snackbar.module.css";
+import style from "./snackbar.module.css";
 import cn from "classnames";
 
 interface SnackBarProps {
@@ -7,7 +7,7 @@ interface SnackBarProps {
   textClose: string;
 }
 
-export default function SnackBar({ text, textClose }: SnackBarProps) {
+export default function Snackbar({ text, textClose }: SnackBarProps) {
   const [close, setClose] = useState(false);
   return close === false ? (
     <div className={cn("body_2", style["snack-bar"])}>
