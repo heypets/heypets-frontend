@@ -20,7 +20,7 @@ export default function Tabs({ children }: StrictPropsWithChildren) {
 
 const renderTabElement = (
   elements: ReactElement[],
-  props: Array<React.ComponentProps<typeof Tab>>,
+  props: Array<React.ComponentProps<typeof Tab>>
 ) => {
   if (elements.length === 1) {
     return elements[0];
@@ -35,9 +35,7 @@ const renderTabElement = (
   );
 };
 
-function List({
-  children,
-}: StrictPropsWithChildren) {
+function List({ children }: StrictPropsWithChildren) {
   const validChildren = Children.toArray(children).filter((child) =>
     isValidElement(child)
   ) as ReactElement[];
@@ -59,7 +57,7 @@ interface TabProps {
   queryString?: string;
 }
 
-function Tab({ value, text, queryString}: TabProps) {
+function Tab({ value, text, queryString }: TabProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
