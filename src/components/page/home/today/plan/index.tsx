@@ -1,17 +1,25 @@
+import { EMPTY_DATA_MESSAGE } from '@/components/errorboundary/empty-boundary';
 import PlanItem from '../plan-item';
 import style from './plan.module.css';
+import { useEffect } from 'react';
 
-const Plan = () => {
+const Plan = ({ className }: { className?: string }) => {
+  // useEffect(() => {
+  //   throw new Error(EMPTY_DATA_MESSAGE);
+  // }, []);
+
   return (
-    <ul className={style.wrapper}>
-      {planList.map(({ type, interval, title }) => {
-        return (
-          <li key={`type${type}_interval${interval}`}>
-            <PlanItem type={type} interval={interval} title={title} />
-          </li>
-        );
-      })}
-    </ul>
+    <div className={className}>
+      <ul className={style.wrapper}>
+        {planList.map(({ type, interval, title }) => {
+          return (
+            <li key={`type${type}_interval${interval}`}>
+              <PlanItem type={type} interval={interval} title={title} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
