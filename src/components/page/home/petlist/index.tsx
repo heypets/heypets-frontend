@@ -3,10 +3,15 @@ import PetItem from '../petitem';
 
 import style from './petlist.module.css';
 
-const PetList = () => {
+type PetListProps = {
+  className?: string;
+};
+
+const PetList = ({ className }: PetListProps) => {
   return (
     <ListBox
       value={'ddd'}
+      className={className}
       onChange={() => {
         console.log('changed');
       }}>
