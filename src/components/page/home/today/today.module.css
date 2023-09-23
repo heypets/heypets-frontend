@@ -1,0 +1,15 @@
+.day {
+  padding: 16px;
+  background-color: var(--white);
+}
+
+.dayTxt {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.panel {
+  min-height: 457px;
+  background-color: var(--white);
+}
