@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 
 import Day from '../day';
 
+import { selectedDay } from '@/context/atom/home.atom';
+
 const useCalendar = () => {
+  const setSelectedDate = useSetRecoilState(selectedDay);
   const [date, setDate] = useState(() => new Day());
 
   const goToPrevMonth = () => {
@@ -24,6 +28,7 @@ const useCalendar = () => {
     newDate.month = newMonth - 1;
 
     setDate(newDate);
+    setSelectedDate(newDate.format('YYYY-MM-DD'));
   };
 
   const lastDayofLasMonth = () => {
