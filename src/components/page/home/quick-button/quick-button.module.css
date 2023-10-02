@@ -1,0 +1,30 @@
+.wrapper {
+  position: fixed;
+  bottom: 82px;
+  right: 16px;
+}
+
+.menu {
+  width: 108px;
+  border-radius: 12px;
+  position: absolute;
+  bottom: 76px;
+  right: 0px;
+  background-color: var(--white);
+  overflow: hidden;
+  box-shadow: 0px 4px 10px 0px #0000001a;
+}
+
+.menu > li {
+  padding: 12px 26px;
+  color: var(--gray-800);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.menu > li:hover {
+  background-color: var(--gray-50);
+  font-weight: 700;
+}
