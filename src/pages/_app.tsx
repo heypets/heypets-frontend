@@ -6,7 +6,11 @@ import HomeHeader from '@/components/headers/home';
 
 import type { NextPage } from 'next';
 import { useEffect, type ReactElement } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 
 import { serviceWorker } from '@mocks/browser';
@@ -32,11 +36,13 @@ export default function App({ Component, pageProps }: AppPropsWithHeader) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <Layout header={header}>
-          <Component {...pageProps} />
-        </Layout>
-      </RecoilRoot>
+      <Hydrate state={pageProps.dehydratedState}>
+        <RecoilRoot>
+          <Layout header={header}>
+            <Component {...pageProps} />
+          </Layout>
+        </RecoilRoot>
+      </Hydrate>
     </QueryClientProvider>
   );
 }

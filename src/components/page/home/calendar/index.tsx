@@ -1,10 +1,15 @@
-import useCalendar, { State } from '@/utils/hooks/use-calendar';
-import style from './calendar.module.css';
-import cn from 'classnames';
 import { MouseEventHandler } from 'react';
+import cn from 'classnames';
+
+import useCalendar, { State } from '@/utils/hooks/use-calendar';
+import { calendarEvents, useCalendarEvents } from '@/api/calendar/calendar';
 
 import LeftIcon from 'public/icons/arrow_left.svg';
 import RightIcon from 'public/icons/arrow_right.svg';
+
+import Mark from './mark';
+import style from './calendar.module.css';
+import { QueryClient, dehydrate } from '@tanstack/react-query';
 
 type CalendarProps = {
   className?: string;
@@ -13,6 +18,14 @@ type CalendarProps = {
 const Calendar = ({ className }: CalendarProps) => {
   const { days, weeks, changeDate, date, goToNextMonth, goToPrevMonth } =
     useCalendar();
+
+  const { data: eventInfo } = useCalendarEvents({
+    pet_id: 0,
+    year: date.year,
+    month: date.month,
+  });
+
+  const events = eventInfo?.data;
 
   const onDateClick: MouseEventHandler = (event) => {
     const target = event.target as HTMLElement;
@@ -63,12 +76,12 @@ const Calendar = ({ className }: CalendarProps) => {
           })}
         </ul>
 
-        {days.map((week) => {
+        {days.map((week, idx) => {
           return (
-            <ul key={`${week[0].value}`} className={style.days}>
+            <ul key={`${date.month}_${idx}`} className={style.days}>
               {week.map(({ value, month }) => {
                 return (
-                  <li key={`${month}_${value}`}>
+                  <li key={`${date.month}_${value}`}>
                     <div
                       data-day={value}
                       data-month={month}
@@ -80,6 +93,18 @@ const Calendar = ({ className }: CalendarProps) => {
                           month === 'CURRENT' && date.day === value,
                       })}>
                       <span>{value}</span>
+                      {events &&
+                        (() => {
+                          const matcher = value - 1;
+                          const { event_exist, diary_exist } =
+                            events?.[matcher];
+                          const items = [
+                            event_exist && 'TODO',
+                            diary_exist && 'DIARY',
+                          ].filter(Boolean) as ('TODO' | 'DIARY')[];
+
+                          return <Mark items={items} />;
+                        })()}
                     </div>
                   </li>
                 );
@@ -93,3 +118,14 @@ const Calendar = ({ className }: CalendarProps) => {
 };
 
 export default Calendar;
+
+export const getServerSideProps = async () => {
+  // const queryClient = new QueryClient();
+  // queryClient.prefetchQuery(['calendar-events', id], () => calendarEvents());
+
+  return {
+    props: {
+      // dehydratedState: dehydrate(),
+    },
+  };
+};
