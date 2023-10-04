@@ -9,9 +9,6 @@ const Mark = ({ items }: MarkProps) => {
             {type === 'TODO' && (
               <div key={type} aria-label="일정" className={style.todo} />
             )}
-            {type === 'PICTURE' && (
-              <div key={type} aria-label="사진" className={style.picture} />
-            )}
             {type === 'DIARY' && (
               <div key={type} aria-label="일기" className={style.diary} />
             )}
@@ -23,7 +20,7 @@ const Mark = ({ items }: MarkProps) => {
 };
 
 type MarkProps = {
-  items: ('TODO' | 'PICTURE' | 'DIARY')[];
+  items: ('TODO' | 'DIARY')[];
 };
 
 export default Mark;
