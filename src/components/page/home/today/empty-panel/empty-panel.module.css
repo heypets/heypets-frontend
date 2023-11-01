@@ -1,0 +1,20 @@
+.wrapper {
+  color: var(--gray-600);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.contents {
+  margin-top: 8px;
+
+  font-size: 12px;
+  line-height: 16px;
+}

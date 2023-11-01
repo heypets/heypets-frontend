@@ -22,7 +22,7 @@ function Button({
   );
 }
 
-type ButtonProps = PropsWithChildren<{
+export type ButtonProps = PropsWithChildren<{
   type?: 'button' | 'submit' | 'reset';
   shape?: 'flat' | 'round';
   className?: string;

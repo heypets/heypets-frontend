@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import Button from '@/components/buttons/button';
+import Button, { ButtonProps } from '@/components/buttons/button';
 
 import style from './floating-button.module.css';
 
@@ -11,9 +11,10 @@ function Floating({
   icon = <Edit />,
   label = '글쓰기',
   classNames,
+  ...restProps
 }: FloatingProps) {
   return (
-    <Button className={cn(style.floating, classNames)}>
+    <Button className={cn(style.floating, classNames)} {...restProps}>
       <div className={style.content}>
         {icon}
         <span className={cn('body_3', 'ellipsis', style.text)}>{label}</span>
@@ -26,6 +27,6 @@ type FloatingProps = {
   icon?: ReactNode;
   label?: string;
   classNames?: string;
-};
+} & ButtonProps;
 
 export default Floating;

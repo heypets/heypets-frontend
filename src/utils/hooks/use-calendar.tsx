@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 
 import Day from '../day';
 
+import { selectedDay } from '@/context/atom/home.atom';
+
 const useCalendar = () => {
+  const setSelectedDate = useSetRecoilState(selectedDay);
   const [date, setDate] = useState(() => new Day());
 
   const goToPrevMonth = () => {
@@ -20,10 +24,11 @@ const useCalendar = () => {
       (month === 'NEXT' && newDate.month + 1) ||
       newDate.month;
 
-    newDate.day = value;
     newDate.month = newMonth - 1;
+    newDate.day = value;
 
     setDate(newDate);
+    setSelectedDate(newDate.format('YYYY-MM-DD'));
   };
 
   const lastDayofLasMonth = () => {
@@ -48,12 +53,12 @@ const useCalendar = () => {
 
   const convertToFormat = (day: number) => {
     const isLastMonth = day < 0;
-    const isNextMonth = day > lastDayOfThisMonth();
+    const isNextMonth = day > lastDayOfThisMonth() - 1;
 
     return {
       value:
         (isLastMonth && day + lastDayofLasMonth() + 1) ||
-        (isNextMonth && day - lastDayOfThisMonth()) ||
+        (isNextMonth && day - lastDayOfThisMonth() + 1) ||
         day + 1,
       month: (isLastMonth && 'LAST') || (isNextMonth && 'NEXT') || 'CURRENT',
     } as State;
@@ -64,7 +69,7 @@ const useCalendar = () => {
     const days: State[][] = [];
 
     const start = -1 * firstWeekOfThisMonth();
-    const end = lastDayOfThisMonth() + lastWeekOfThisMonth();
+    const end = lastDayOfThisMonth() + (6 - lastWeekOfThisMonth());
 
     for (let day = start; day < end; day += 1) {
       const week = convertToFormat(day);

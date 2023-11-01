@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 16px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.contents {
+  margin-left: 8px;
+  line-height: 17px;
+  flex: 1;
+  font-size: 12px;
+}
+
+.contents > p:last-of-type {
+  margin-top: 2px;
+  color: var(--gray-600);
+}

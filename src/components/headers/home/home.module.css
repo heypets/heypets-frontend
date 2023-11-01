@@ -3,6 +3,7 @@
   background: transparent;
   border: none;
   text-align: start;
+  color: var(--gray-900);
 }
 
 .wrapper {
